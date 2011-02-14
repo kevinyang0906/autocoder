@@ -1,0 +1,12 @@
+Bug:
+
+
+优化：
+1. 修改autocoder.json配置方式，使得component的每种类型的处理器可以由用户配置或是按照CoC的方式进行自由插拔
+2. 优化TableAssembler的代码
+3. targetPath考虑改名为pathPrefix或是basePath，因为可能不同类型的component可能需要指向各自的目录
+4. 优化AutoCoder和Component类中的代码结构，使得更加OO。例如，可以考虑将save方法放到Component中，特别是buildCalculatedComponent这种模式
+
+功能：
+1. 提供一个${showMeTheMoney(data_model)}的API用于让用户查看Data Model的所有内容
+

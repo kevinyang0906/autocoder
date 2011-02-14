@@ -1,0 +1,69 @@
+{
+	targetPath: "D:/Work/J@EE/spark-web/src/main/java",
+	templatePath: "/spark",
+	author: "GuoLin",
+	templateGenerator: "com.baidu.autocoder.generator.FreemarkerGenerator",
+	encoding: "UTF-8",
+	database: {
+		driver: "com.mysql.jdbc.Driver",
+		url: "jdbc:mysql://db-iit-dev02.db01.baidu.com:3366/spark?useUnicode=true&characterEncoding=utf8",
+		username: "root",
+		password: ""
+	},
+	components: {
+		classes: {
+			model: {
+				className: "${entityName}",
+				classPackage: "com.baidu.spark.model",
+				template: "model.ftl"
+			},
+			dao: {
+				className: "${entityName}Dao",
+				classPackage: "com.baidu.spark.dao",
+				template: "dao.ftl"
+			},
+			daoHibernate: {
+				className: "${entityName}DaoHibernate",
+				classPackage: "com.baidu.spark.dao.hibernate",
+				template: "daoHibernate.ftl"
+			},
+			service: {
+				className: "${entityName}Service",
+				classPackage: "com.baidu.spark.service",
+				template: "service.ftl"
+			},
+			serviceImpl: {
+				className: "${entityName}ServiceImpl",
+				classPackage: "com.baidu.spark.service.impl",
+				template: "serviceImpl.ftl"
+			},
+			controller: {
+				className: "${entityName}Controller",
+				classPackage: "com.baidu.spark.web",
+				template: "controller.ftl"
+			}
+		},
+		files: {
+		}
+	},
+	typeMapping: {
+		"tinyint": "BOOLEAN",
+		"number": "LONG",
+		"bigint": "LONG",
+		"int": "INTEGER",
+		"integer": "INTEGER",
+		"float": "BIGDECIMAL",
+		"double": "BIGDECIMAL",
+		"real": "BIGDECIMAL",
+		"nvarchar": "STRING",
+		"varchar": "STRING",
+		"text": "STRING",
+		"mediumtext": "STRING",
+		"longtext": "STRING",
+		"mediumblob": "STRING",
+		"char": "STRING",
+		"date": "DATE",
+		"timestamp": "DATETIME",
+		"datetime": "DATETIME"
+	}
+}
