@@ -1,45 +1,47 @@
 {
-	targetPath: "D:/Work/J@EE/spark-web/src/main/java",
+	version: "3.0",
+	targetPath: "work/spark-web/src/main/java",
 	templatePath: "/spark",
-	author: "GuoLin",
+	author: "hjyang",
 	templateGenerator: "com.baidu.autocoder.generator.FreemarkerGenerator",
 	encoding: "UTF-8",
 	database: {
 		driver: "com.mysql.jdbc.Driver",
-		url: "jdbc:mysql://db-iit-dev02.db01.baidu.com:3366/spark?useUnicode=true&characterEncoding=utf8",
-		username: "root",
-		password: ""
+		url: "jdbc:mysql://dev.xueqiu.com:3306/snowball_test?useUnicode=true&amp;characterEncoding=utf8",
+		username: "snowball",
+		password: "94320d3b33a29d53977f813d0e4b1474"
 	},
 	components: {
+		description:"${description}",
 		classes: {
 			model: {
 				className: "${entityName}",
-				classPackage: "com.baidu.spark.model",
+				classPackage: "com.snowballfinance.platform.community.domain.entity",
 				template: "model.ftl"
 			},
 			dao: {
 				className: "${entityName}Dao",
-				classPackage: "com.baidu.spark.dao",
+				classPackage: "com.snowballfinance.platform.community.dao.${packageName}",
 				template: "dao.ftl"
 			},
-			daoHibernate: {
-				className: "${entityName}DaoHibernate",
-				classPackage: "com.baidu.spark.dao.hibernate",
-				template: "daoHibernate.ftl"
+			daoImpl: {
+				className: "${entityName}DaoImpl",
+				classPackage: "com.snowballfinance.platform.community.dao.${packageName}.impl",
+				template: "daoImpl.ftl"
 			},
 			service: {
 				className: "${entityName}Service",
-				classPackage: "com.baidu.spark.service",
+				classPackage: "com.snowballfinance.platform.community.service.${packageName}",
 				template: "service.ftl"
 			},
 			serviceImpl: {
 				className: "${entityName}ServiceImpl",
-				classPackage: "com.baidu.spark.service.impl",
+				classPackage: "com.snowballfinance.platform.community.service.${packageName}.impl",
 				template: "serviceImpl.ftl"
 			},
 			controller: {
 				className: "${entityName}Controller",
-				classPackage: "com.baidu.spark.web",
+				classPackage: "com.snowballfinance.platform.community.web.controller.${packageName}",
 				template: "controller.ftl"
 			}
 		},

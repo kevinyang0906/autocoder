@@ -22,7 +22,7 @@ import com.baidu.autocoder.Configuration;
  * 数据库表信息组装器.
  * TODO 此类代码有待优化
  * 
- * @author GuoLin
+ * @author GuoLin,hjyang
  *
  */
 public class TableAssembler {
@@ -52,15 +52,14 @@ public class TableAssembler {
 			openConnection();
 			
 			List<Field> fields = getFieldList(tableName);
-			Field primaryKey = null;
+			List<Field> primaryKey = new ArrayList<Field>();
 			
 			// 将主键从字段列表中独立出来
 			for (Iterator<Field> iter = fields.iterator(); iter.hasNext(); ) {
 				Field field = iter.next();
 				if (field.isPrimary()) {
-					primaryKey = field;
+					primaryKey.add( field);
 					iter.remove();
-					break;
 				}
 			}
 			

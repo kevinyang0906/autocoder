@@ -65,6 +65,9 @@ public class Configuration {
 	/** 作者，用于注释. */
 	private final String author;
 	
+	/** 版本 */
+	private final String version;
+	
 	/** 生成器类 */
 	private final Generator generator;
 	
@@ -136,6 +139,7 @@ public class Configuration {
 		
 		// 作者
 		author = root.path("author").getTextValue();
+		version = root.path("version").getTextValue();
 	}
 	
 	/**
@@ -226,5 +230,10 @@ public class Configuration {
 	public Generator getGenerator() {
 		return generator;
 	}
+
+	public String getVersion() {
+		return version;
+	}
+	
 	
 }

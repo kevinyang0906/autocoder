@@ -19,11 +19,11 @@ public class Table {
 	private final String entityName;
 	
 	/** 主键 */
-	private final Field primaryKey;
+	private final List<Field> primaryKey;
 	
 	/** 字段列表 */
 	private final List<Field> fields;
-
+	
 	/**
 	 * 构造器.
 	 * 实体名将会根据表名自动生成
@@ -31,7 +31,7 @@ public class Table {
 	 * @param primaryKey 主键
 	 * @param fields 字段列表
 	 */
-	public Table(String tableName, Field primaryKey, List<Field> fields) {
+	public Table(String tableName, List<Field> primaryKey, List<Field> fields) {
 		this(tableName, StringUtils.underscoreToCamel(tableName, true), primaryKey, fields);
 	}
 
@@ -42,7 +42,7 @@ public class Table {
 	 * @param primaryKey 主键
 	 * @param fields 字段列表
 	 */
-	public Table(String tableName, String entityName, Field primaryKey, List<Field> fields) {
+	public Table(String tableName, String entityName, List<Field> primaryKey, List<Field> fields) {
 		this.tableName = tableName;
 		this.entityName = entityName;
 		this.primaryKey = primaryKey;
@@ -57,7 +57,7 @@ public class Table {
 		return entityName;
 	}
 
-	public Field getPrimaryKey() {
+	public List<Field> getPrimaryKey() {
 		return primaryKey;
 	}
 

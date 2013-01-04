@@ -2,6 +2,8 @@ package com.baidu.autocoder;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ import com.baidu.autocoder.component.Component;
 import com.baidu.autocoder.database.Table;
 import com.baidu.autocoder.database.TableAssembler;
 import com.baidu.autocoder.generator.Generator;
+import com.baidu.autocoder.util.StringUtils;
 
 
 /**
@@ -30,7 +33,7 @@ public class AutoCoder {
 	 * @param tableName 表名
 	 * @param entityName 实体名
 	 */
-	public void generate(String tableName, String entityName) {
+	public void generate(String tableName, String entityName,String description) {
 		
 		// 加载全局配置
 		Configuration config = Configuration.getConfiguration();
@@ -43,7 +46,10 @@ public class AutoCoder {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("table", table);
 		model.put("entityName", table.getEntityName());
+		model.put("description", description);
+		model.put("packageName", StringUtils.uncapitalize(table.getEntityName()));
 		model.put("author", config.getAuthor());
+		model.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 
 		// 重新计算所有的组件
 		Map<String, Component> calculatedComponentMap = new HashMap<String, Component>();
@@ -51,6 +57,7 @@ public class AutoCoder {
 			Component calculatedComponent = entry.getValue().buildCalculatedComponent(model);
 			calculatedComponentMap.put(calculatedComponent.getType(), calculatedComponent);
 		}
+		model.put("version", config.getVersion());
 		model.put("components", calculatedComponentMap);
 
 		// 逐个处理组件
@@ -82,7 +89,7 @@ public class AutoCoder {
 	 */
 	public static void main(String[] args) {
 		if (args == null || args.length == 0) {
-			System.out.println("Usage: java com.baidu.autocoder.AutoCoder <TableName> [EntityName]");
+			System.out.println("Usage: java com.baidu.autocoder.AutoCoder <TableName> [EntityName] [description]");
 			return;
 		}
 		
@@ -95,7 +102,14 @@ public class AutoCoder {
 			entityName = null;
 		}
 		
+		String description;
+		if (args.length >= 3) {
+			description = args[2];
+		} else {
+			description = null;
+		}
+		
 		AutoCoder coder = new AutoCoder();
-		coder.generate(tableName, entityName);
+		coder.generate(tableName, entityName,description);
 	}
 }
