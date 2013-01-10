@@ -33,7 +33,7 @@ public class AutoCoder {
 	 * @param tableName 表名
 	 * @param entityName 实体名
 	 */
-	public void generate(String tableName, String entityName,String description) {
+	public void generate(String tableName, String entityName,String description,String packageName) {
 		
 		// 加载全局配置
 		Configuration config = Configuration.getConfiguration();
@@ -47,7 +47,7 @@ public class AutoCoder {
 		model.put("table", table);
 		model.put("entityName", table.getEntityName());
 		model.put("description", description);
-		model.put("packageName", StringUtils.uncapitalize(table.getEntityName()));
+		model.put("packageName", packageName);
 		model.put("author", config.getAuthor());
 		model.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 
@@ -109,7 +109,14 @@ public class AutoCoder {
 			description = null;
 		}
 		
+		String packageName;
+		if (args.length >= 4) {
+			packageName = args[3];
+		} else {
+			packageName = null;
+		}
+		
 		AutoCoder coder = new AutoCoder();
-		coder.generate(tableName, entityName,description);
+		coder.generate(tableName, entityName,description,packageName);
 	}
 }

@@ -1,7 +1,7 @@
 {
 	version: "3.0",
-	targetPath: "work/spark-web/src/main/java",
-	templatePath: "/spark",
+	targetPath: "work/snowball/src/main/java",
+	templatePath: "/snowball",
 	author: "hjyang",
 	templateGenerator: "com.baidu.autocoder.generator.FreemarkerGenerator",
 	encoding: "UTF-8",

@@ -8,7 +8,8 @@ public class AutoCoderTest {
 
 	@Test
 	public void testMain() {
-		AutoCoder.main(new String[]{"like_comment_timeline","LikeCommentTimeline","评论赞"});
+		AutoCoder.main(new String[]{"usergroup","UserGroup","用户组","user"});
+		AutoCoder.main(new String[]{"member","Member","用户组成员","user"});
 	}
 
 }
