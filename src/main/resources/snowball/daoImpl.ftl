@@ -68,8 +68,8 @@ public class ${className} extends  SimpleClientTemplate  implements ${components
 	}
 	
 	private static final String INSERT_SQL= "insert into ${table.tableName}(<#list table.primaryKey as field>${field.fieldName}<#if field_has_next>,</#if></#list><#if (table.fields?size > 0)>,</#if><#list table.fields as field>${field.fieldName}<#if field_has_next>,</#if></#list>) values(<#list table.primaryKey as field>?<#if field_has_next>,</#if></#list><#if (table.fields?size > 0)>,</#if><#list table.fields as field>?<#if field_has_next>,</#if></#list>)";
-	private static final String SELECT_SQL= "select <#list table.primaryKey as field>${field.fieldName} as ${field.propertyName}<#if field_has_next>,</#if></#list><#if (table.fields?size > 0)>,</#if><#list table.fields as field>${field.fieldName} as ${field.fieldName}<#if field_has_next>,</#if></#list> from ${table.tableName} where <#list table.primaryKey as field>${field.fieldName} = ?<#if field_has_next>,</#if></#list>";
+	private static final String SELECT_SQL= "select <#list table.primaryKey as field>${field.fieldName} as ${field.propertyName}<#if field_has_next>,</#if></#list><#if (table.fields?size > 0)>,</#if><#list table.fields as field>${field.fieldName} as ${field.fieldName}<#if field_has_next>,</#if></#list> from ${table.tableName} where <#list table.primaryKey as field>${field.fieldName} = ?<#if field_has_next> and </#if></#list>";
 	private static final String DELETE_SQL= "delete from ${table.tableName} where <#list table.primaryKey as field>${field.fieldName} = ?<#if field_has_next>,</#if></#list>";
-	private static final String UPDATE_SQL= "update ${table.tableName} set <#list table.fields as field>${field.fieldName} = ?<#if field_has_next>,</#if></#list> where  <#list table.primaryKey as field>${field.fieldName} = ?<#if field_has_next>,</#if></#list>";
+	private static final String UPDATE_SQL= "update ${table.tableName} set <#list table.fields as field>${field.fieldName} = ?<#if field_has_next>,</#if></#list> where  <#list table.primaryKey as field>${field.fieldName} = ?<#if field_has_next> and </#if></#list>";
 	
 }
