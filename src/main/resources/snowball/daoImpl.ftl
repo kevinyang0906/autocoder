@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 import ${components.dao.classPackage}.${components.dao.className};
 import ${components.model.classPackage}.${components.model.className};
-import net.comze.suinoux.orm.client.SimpleClientTemplate;
+import com.snowballfinance.platform.community.dao.SimpleClientTemplate;
 import com.snowballfinance.platform.community.core.DataAccessException;
 
 /**
